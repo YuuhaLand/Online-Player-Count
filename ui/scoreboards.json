@@ -1,0 +1,20 @@
+{
+  "namespace": "scoreboard",
+
+  "scoreboard_player_list": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "worldname_padding@pause.vertical_padding": {
+              "size": [ "100%", 4 ]
+            }
+          },
+          { "worldname_label@pause.players_label": {} }
+        ]
+      }
+    ]
+  }
+}

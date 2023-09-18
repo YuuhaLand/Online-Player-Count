@@ -1,0 +1,87 @@
+{
+  "namespace": "pause",
+
+  "players_label": {
+    "text": "",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "stack": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "world_name": {
+                "type": "label",
+                "text": "#worldname",
+                "size": [ "100%", "default" ],
+                "color": "$main_header_text_color",
+                "layer": 2,
+                "bindings": [
+                  {
+                    "binding_name": "#worldname"
+                  }
+                ]
+              }
+            },
+            {
+              "padding": {
+                "type": "panel",
+                "size": [ 0, 5 ]
+              }
+            },
+            {
+              "player_count_panel": {
+                "type": "panel",
+                "size": [ "100%", 15 ],
+                "clips_children": true,
+                "controls": [
+                  {
+                    "players_grid_count": {
+                      "type": "grid",
+                      "size": [ "100%", "default" ],
+                      "grid_item_template": "pause.players_count_label",
+                      "grid_dimension_binding": "#players_grid_dimension",
+                      "collection_name": "players_collection",
+                      "anchor_to": "bottom_left",
+                      "anchor_from": "bottom_left",
+                      "bindings": [
+                        {
+                          "binding_name": "#players_grid_dimension",
+                          "binding_condition": "always"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "players_count_label": {
+    "type": "label",
+    "size": [ "100%", 15 ],
+    "text": "#text",
+    "color": "$main_header_text_color",
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "players_collection"
+      },
+      {
+        "binding_type": "collection",
+        "binding_collection_name": "players_collection",
+        "binding_name": "#collection_index"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "('オンラインのプレイヤー: ' + (#collection_index + 1) + '人')",
+        "target_property_name": "#text"
+      }
+    ]
+  }
+}
